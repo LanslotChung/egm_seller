@@ -1,0 +1,10 @@
+<!--components/topTitle/topTitle.wxml-->
+<cover-view class="custom flex_center" style="padding-top:{{statusBarHeight}}px">
+  <cover-view class="goback" wx:if="{{show}}" bindtap="gobackFn">
+    <!-- <cover-view class="iconfanhui iconfont"></cover-view> -->
+    <cover-image src="./back.png"></cover-image>
+  </cover-view>
+  <cover-view class="entering" wx:if="{{entering}}" bindtap="enteringFn">录客</cover-view>
+  <cover-view>{{title?title:'云楼'}}</cover-view>
+</cover-view>
+<view class="empty_custom" style="padding-top:{{statusBarHeight}}px"></view>

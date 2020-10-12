@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/loading/loading",
+    "pages/index/index",
+    "pages/visitor/visitor",
+    "pages/client/client",
+    "pages/backlog/backlog",
+    "pages/visitorDetails/visitorDetails",
+    "pages/clientDetails/clientDetails",
+    "pages/backlogList/backlogList",
+    "pages/ProductList/ProductList"
+  ],
+  "tabBar": {
+    "color": "#9e9e9e",
+    "selectedColor": "#161616",
+    "custom": false,
+    "list": [
+      {
+        "custom": true,
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "imgs/sy1.png",
+        "selectedIconPath": "imgs/sy.png"
+      },
+      {
+        "text": "访客",
+        "pagePath": "pages/visitor/visitor",
+        "iconPath": "imgs/fk1.png",
+        "selectedIconPath": "imgs/fk.png"
+      },
+      {
+        "text": "客户",
+        "pagePath": "pages/client/client",
+        "iconPath": "imgs/kh1.png",
+        "selectedIconPath": "imgs/kh.png"
+      },
+      {
+        "text": "待办",
+        "pagePath": "pages/backlog/backlog",
+        "iconPath": "imgs/db1.png",
+        "selectedIconPath": "imgs/db.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "topTitle": "/components/topTitle/topTitle",
+    "ec-canvas": "/components/ec-canvas/ec-canvas"
+  }
+}

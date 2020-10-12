@@ -1,0 +1,99 @@
+/* pages/loading/loading.wxss */
+.loading{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.loading image{
+  display: block;
+  height: 100vh;
+}
+.loading .iconjiazaizhong{
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -100rpx;
+  margin-top: -200rpx;
+  text-align: center;
+  color: #e0e0e0;
+  line-height: 200rpx;
+  font-size: 100rpx;
+  animation: myfirst 2s infinite linear;
+}
+@keyframes myfirst{
+  from {transform:rotate(0deg)}
+  to {transform:rotate(360deg)}
+}
+.getUserInfo{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 100;
+}
+.getUserInfo-0{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -200rpx;
+  height: 280rpx;
+  width: 600rpx;
+  margin-left:-300rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.getUserInfo-0-0{
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #333;
+  font-size: 32rpx;
+}
+.getUserInfo-0-1{
+  border-bottom: 2rpx solid #e0e0e0;
+  color: #666;
+  font-size: 28rpx;
+  padding: 0 50rpx 40rpx;
+  line-height: 40rpx;
+}
+.getUserInfo-0-2{
+  height: 78rpx;
+  line-height: 78rpx;
+  display: flex;
+  text-align: center;
+}
+.getUserInfo-0-2-0{
+  flex: 1;
+  border-right: 2rpx solid #e0e0e0;
+  font-size: 28rpx;
+  color: #999;
+}
+.getUserInfo-0-2-1{
+  flex: 1;
+  font-size: 28rpx;
+  color: #3c7ff0;
+  position: relative;
+}
+.getUserInfo-0-2-1 button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0);
+  margin: 0;
+  padding: 0;
+  width: 100% ! important;
+}

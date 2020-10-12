@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "topTitle": "/components/topTitle/topTitle"
+  }
+}

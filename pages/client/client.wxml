@@ -1,0 +1,117 @@
+<!--pages/client/client.wxml-->
+<topTitle title="客户" show="{{false}}" entering="{{true}}" bind:myevent="enteringFn" refresher-triggered="true" />
+<scroll-view scroll-y refresher-enabled style="height:{{scrollViewH}}px;box-sizing:border-box" bindrefresherrefresh="onRefresh" refresher-triggered="{{refresherTriggered}}" bindscrolltolower="onscrolltolower" bindrefresherrestore="onRestore">
+  <view style="height:20rpx;"></view>
+  <block wx:for="{{visitorList}}" wx:key="index">
+    <view class="client-0">
+      <view class="client-0-0">
+        <view class="client-0-0-0"><image src="{{item.headPic}}"></image></view>
+        <view class="client-0-0-1" bindtap="goClientDetails" data-index="{{index}}">编辑</view>
+      </view>
+      <view class="client-0-1">
+        <view class="client-0-1-0">
+          <view class="client-0-1-0-0">{{item.nickName}}</view>
+          <view wx:if="{{item.sex == 1}}" class="client-0-1-0-1">男</view>
+          <view wx:if="{{item.sex == 2}}" class="client-0-1-0-2">女</view>
+        </view>
+        <view class="client-0-1-1">最后访问：{{item.visTime}}</view>
+        <view class="client-0-1-2">
+          <block wx:for="{{item.userLabelList}}"  wx:key="idx" wx:for-index="idx" >
+            <view style="display:flex;margin-bottom: 10rpx;"><view class="client-0-1-2-0" bindtap="removeLabelFn" data-id="{{item.id}}" data-index="{{index}}" data-idx="{{idx}}">{{item.labelContent}}</view></view>
+          </block>
+          <view wx:if="{{item.userLabelList.length<3}}" class="adduserLabel" bindtap="adduserLabelFn" data-index="{{index}}">+</view>
+        </view>
+        <view class="client-0-1-3" bindtap="callPhone" data-id="{{item.mobile}}">
+          <view class="iconfont icondianhua"></view>
+          <view>{{item.mobile}}</view>
+        </view>
+      </view>
+      <view class="client-0-2">
+        <view class="client-0-2-0">
+          <view class="client-0-2-0-0" style="{{item.source==1?'background-color:#fdbf30':'background-color:#fc6240'}}">{{item.source==1?"线上到访":"线下到访"}}</view>
+          <view class="client-0-2-0-1">{{item.intentional==0?'高':item.intentional==1?'中':item.intentional==2?'低':''}}</view>
+          <view class="client-0-2-0-2">意向等级</view>
+        </view>
+        <view class="client-0-2-1" bindtap="addUserDeal" data-index="{{index}}">添加待办</view>
+      </view>
+    </view>
+  </block>
+
+
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+  <view class="finish" wx:if="{{finish&&visitorList.length!=0}}">没有别的客户了~</view>
+  <view class="no-data" wx:if="{{!loading && visitorList.length==0}}">暂无客户</view>
+</scroll-view>
+
+<view class="box-0" wx:if="{{showBox0}}">
+  <view class="box-0-0">
+    <!-- <view class="box-0-0-0">提示</view> -->
+    <view class="box-0-0-1">
+      <view class="box-0-0-1-0">客户标签:</view>
+      <input placeholder="请输入标签" value="{{customerTag}}" bindinput="inputCustomerTag"></input>
+    </view>
+    <view class="box-0-0-2">
+      <view class="box-0-0-2-0" bindtap="hideBox0">取消</view>
+      <view class="box-0-0-2-1" bindtap="addCustomerTagFn">确认</view>
+    </view>
+  </view>
+</view>
+
+
+<view class="box-4" wx:if="{{showBox4}}">
+  <view class="box-4-0">
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">姓名：</view>
+      <input class="box-4-0-0-2" value="{{clientName}}" bindinput="inputClientNameFn"></input>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">性别：</view>
+      <picker class="box-4-0-0-2" bindchange="bindsexPickerChange" value="{{clientSexsIndex}}" range="{{sexs}}" range-key="txt">
+        <view class="picker">{{sexs[clientSexsIndex].txt}}</view>
+      </picker>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">手机：</view>
+      <input class="box-4-0-0-2" type="number" value="{{clientPhone}}" bindinput="inputClientPhoneFn" maxlength="11"></input>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">确认手机：</view>
+      <input class="box-4-0-0-2" type="number" value="{{clientPhone1}}" bindinput="inputClientPhone1Fn" maxlength="11"></input>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">意向：</view>
+      <picker class="box-4-0-0-2" bindchange="bindDegreePickerChange" value="{{clientDegreeIndex}}" range="{{clientDegrees}}" range-key="txt">
+        <view class="picker">{{clientDegrees[clientDegreeIndex].txt}}</view>
+      </picker>
+    </view>
+    <view class="box-4-1">
+      <view class="box-4-1-0" bindtap="addClicentFn">确定</view>
+      <view class="box-4-1-1" bindtap="hideClicentFn">取消</view>
+    </view>
+  </view>
+</view>
+
+<view class="box-5" wx:if="{{showBox5}}">
+  <view class="box-5-0">
+  <view class="box-4-0-0">
+      <view class="box-4-0-0-1">待办时间：</view>
+      <picker class="box-4-0-0-2" mode="date" value="{{dealTime}}" start="2020-06-01" end="2050-12-31" bindchange="bindDateChange">
+        <view class="picker">{{dealTime}}</view>
+      </picker>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">待办类型：</view>
+      <picker class="box-4-0-0-2" bindchange="bindBacklogPickerChange" value="{{backlogIndex}}" range="{{backlogTypes}}" range-key="txt">
+        <view class="picker">{{backlogTypes[backlogIndex].txt}}</view>
+      </picker>
+    </view>
+    <view class="box-4-0-0 box-4-0-1">
+      <view class="box-4-0-0-1">待办说明：</view>
+      <textarea class="box-4-0-0-2 box-4-0-0-3" value="{{backlogExplain}}" bindinput="inputBacklogExplain"></textarea>
+    </view>
+    <view class="box-4-1">
+      <view class="box-4-1-0 box-5-1-0" bindtap="addBacklogFn">确定</view>
+      <view class="box-4-1-1" bindtap="hideBox5Fn">取消</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,100 @@
+/* components/topTitle/topTitle.wxss */
+.custom{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 90rpx;
+  background: #3b7ff0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom cover-view{
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 500;
+  max-width: 280rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.goback{
+  position: absolute;
+  left: 0;
+  font-size: 50rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0 20rpx;
+}
+.goback .iconfanhui{
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.goback cover-image{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 25rpx 0;
+}
+.empty_custom{
+  height: 90rpx;
+  width: 100%;
+}
+.custom .entering{
+  position: absolute;
+  left: 40rpx;
+  width: 96rpx;
+  height: 50rpx;
+  text-align: center;
+  color: #fff;
+  line-height: 50rpx;
+  border-radius: 8rpx;
+  background-color: #f59a23;
+  font-size: 24rpx;
+}
+
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1809929_81lqxofi0c3.eot?t=1590719308064'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1809929_81lqxofi0c3.eot?t=1590719308064#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAXYAAsAAAAAC1gAAAWKAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDbAqJBIcsATYCJAMgCxIABCAFhG0HbhukCSMRdntwMpH9FTZluBeg2A0cxMRyb91jOGIWcGbcDJuB2eALFOt36T13weCABBL4AQAAAADB07eG/tnZu9swKkAFksiGVSSCRFJho1th+iJUaxG2SK4XAIPnBKZr4EjdDlaYQqfrRvgo+kBemkuFrKSDCsjVTu2BDka94Nd6m9P82UmI7ooz4aOuwSZtluQonmcrXYSWwDL+sAEHmw+awIA8wQL//ZirE21baPqmabdezP6fqCLiicgtYSERkolWQoUQIzrE2XAz6FT57nI+BEiklDqkqycQBhwWNgvazE1nJAEu48I2sAVnDSv2tcgZAc6cmDsAnAZ/L5+AenFgCBTetm/CKxVo8wu/qXiMj3oEtNsLAMODQIE6wIIcV4Z2NSrVoSTOH2YZAVJxGEIPeNBDHvG9/485WRo8kCNCqhDTu0OEYgnO6x/PgISQJRnUsXIEHnA0CQLhQIEgOLBAMBwEQAgcCFAKHIRAm+iGAcB5+6QDxSADIPcAxk1BSHD3prNBicLklARqlBwlJ0sXyYQOGWH4NYQF5DNFoQo0NQ1LT5in4nVGY4FOV8hI/ODdcv9jH7qX79xR0w/L4/VRftDTRuP02a7z7HOdZzDc/BQUJ5a7VidZExudayhx8jT71IkaqhEmu1G6CWN6UhE4DEMiUCwcRkNzRI5SDJwjhSA8LD0qgwkeoznXItN1bbI71sfXhdCwhiRhHKF6cpTUSJfMGNO8AGtPRx57hBcf66MUmnqwkG9g+h3KvMeot6kMg9E0usZMikLPyFRVoip/zy6tEWJ8SXpF8MgDOP1QHn9M2BOTq8tSBECSxddo9UWmukqpzZH10plTMxXsgzhLfGiuj0V9TCdJ7ZQfnZRJGVteH5dMHE7qlE4e3cJ1pJJGCMnhJc6zwIBDWztrAf5JsUDfUfnAwP5+xy0vF5wlI1b107ZL4d/2L4F/nFWFCEwk1CZ51APFZdRV7bg5fpy2/yVoT0i/Vvo70X2dQh0tur1jcOdfoUBxHXEQaHh0p7EjzbI6GtP0kb/QtZ4DdZw6j/mt3vjVVdJy+5wdPHnBu4MeIDa78HIzZzhSS0o/xj9f8vOVILRl6uvhNQBVLoEKcGYerArVilXysww2dvdD0l5qvxz3lbEybVfyK7teKFg1M19R/D1OI/7+nXMI4gBtgvu0iyyts0TpKaMBow7H3WFWQTYrtJcoyIFZIOd0yLY9DoXCBw86GAqWAUxdnYNZmZms4J49M8u9gcrTt7e2p34HWW/+Q6n7275oet2XJzPBmHxTh8w6nR8vUVZxGN9fMFSUGzm//E4w0QsS0Ih6Tc6bN5zUtH3/HfBUxa1epEkcrI190vHvfgXNjc5/B3xzndsQvd35P/o75sH7y28BEFOK1g64N/Qd14D9gtLD2wC017wQ/9UiTQSwmNsQX9QbdfsHrEe0er1/QOHPUdKvYtajv8NPvWR8wbI9zdcYodZ+37XKCXahZ7ezs5E5GnXEMfOVKBggUabB9zyWybNt4hw1GwTnJGCIKAHFUUa01DoISKIRQhytkEgtvQcnkcUKitgEoIYDA0I6t8CQyg0o6dwlWupTCMjlC4Ski0IiIwKOmUTFdcInVxFbwQG6H+DeO7JeOQnbPqOaTRvT+oDzjjFxFqq8zFfv0GHcxg7pU9UiBBS9hVtzMTTGQ4h+wl7yUSTsioKq3ijvvV2ccBWxFRyA7gfg3jvy6stJ4fefUc2mjQ1DzhXfMSZeOlCRUyqIdxanGvJYOqdPVSNUIICGrb0FbimARkoeCNVrTdhLztihEHYUNBVpLfn+sX2kFwGJ8Dc4MaJiJZBQInGSwMFE68aZTyduf1v+Hb1TB2puXcdHhlsvzgpua3yfpQPDd7KROyJ03yVBtVgAAAA=') format('woff2'),
+  url('//at.alicdn.com/t/font_1809929_81lqxofi0c3.woff?t=1590719308064') format('woff'),
+  url('//at.alicdn.com/t/font_1809929_81lqxofi0c3.ttf?t=1590719308064') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1809929_81lqxofi0c3.svg?t=1590719308064#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconfanhui:before {
+  content: "\e655";
+}
+
+.iconjiazaizhong:before {
+  content: "\e6ab";
+}
+
+.iconguanbi:before {
+  content: "\e602";
+}
+
+.iconliaotian:before {
+  content: "\e60f";
+}
+
+.iconloc-s:before {
+  content: "\e654";
+}
+
+.iconliulan:before {
+  content: "\e663";
+}
+
+.iconfenxiang:before {
+  content: "\e600";
+}

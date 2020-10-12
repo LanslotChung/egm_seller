@@ -1,0 +1,30 @@
+<!--pages/visitor/visitor.wxml-->
+<topTitle title="访客" show="{{false}}" />
+<scroll-view scroll-y refresher-enabled style="height:{{scrollViewH}}px;box-sizing:border-box" bindrefresherrefresh="onRefresh" refresher-triggered="{{refresherTriggered}}" bindscrolltolower="onscrolltolower" bindrefresherrestore="onRestore">
+  <view style="height:20rpx;"></view>
+  <block wx:for="{{visitorList}}" wx:key="index">
+    <view class="box-0">
+      <view class="box-0-0">
+        <image src="{{item.headPic}}"></image>
+      </view>
+      <view class="box-0-1">
+        <view class="box-0-1-0">
+          <view class="box-0-1-0-0">{{item.nickName}}</view>
+          <view wx:if="{{item.sex == 1}}" class="box-0-1-0-1">男</view>
+          <view wx:if="{{item.sex == 2}}" class="box-0-1-0-2">女</view>
+        </view>
+        <view class="box-0-1-1" bindtap="callPhone" data-id="{{item.mobile}}">
+          <view class="iconfont icondianhua"></view>
+          <view>{{item.mobile}}</view>
+        </view>
+        <view class="box-0-1-2">最后访问：{{item.visTime}}</view>
+      </view>
+      <view class="box-0-2" bindtap="goVisitorDetails" data-index="{{index}}">详情</view>
+    </view>
+  </block>
+
+
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+  <view class="finish" wx:if="{{finish&&visitorList.length!=0}}" >没有别的访客了~</view>
+  <view class="no-data" wx:if="{{!loading && visitorList.length==0}}">暂无访客</view>
+</scroll-view>

@@ -1,0 +1,47 @@
+<!--pages/backlogList/backlogList.wxml-->
+<topTitle title="{{title}}" show="{{true}}" />
+
+
+<view style="height:20rpx;"></view>
+<block wx:for="{{visitorList}}" wx:key="index">
+	<view class="box-0">
+		<view class="client-0">
+			<view class="client-0-0">
+				<view class="client-0-0-0">
+					<image src="{{item.headPic}}"></image>
+				</view>
+			</view>
+			<view class="client-0-1">
+				<view class="client-0-1-0">
+					<view class="client-0-1-0-0">{{item.userName}}</view>
+					<view wx:if="{{item.sex == 1}}" class="client-0-1-0-1">男</view>
+					<view wx:if="{{item.sex == 2}}" class="client-0-1-0-2">女</view>
+				</view>
+				<view class="client-0-1-1">最后访问：{{item.visitorTime}}</view>
+				<!-- <view class="client-0-1-2">
+          <block wx:for="{{item.userLabelList}}" wx:key="index">
+            <view style="display:flex;margin-bottom: 10rpx;"><view class="client-0-1-2-0">{{item.labelContent}}</view></view>
+          </block>
+          <view wx:if="{{item.userLabelList.length<3}}" class="adduserLabel" bindtap="adduserLabelFn" data-index="{{index}}">+</view>
+        </view> -->
+				<view class="client-0-1-3" bindtap="callPhone" data-id="{{item.mobile}}" data-index="{{index}}">
+					<view class="iconfont icondianhua"></view>
+					<view>{{item.mobile}}</view>
+				</view>
+			</view>
+			<view class="client-0-2">
+				<view class="client-0-2-0">
+					<view class="client-0-2-0-0" style="{{item.source==1?'background-color:#fdbf30':'background-color:#fc6240'}}">{{item.source==1?"线上到访":"线下到访"}}</view>
+					<view class="client-0-2-0-1">{{item.intentional==0?'高':item.intentional==1?'中':item.intentional==2?'低':''}}</view>
+					<view class="client-0-2-0-2">意向等级</view>
+				</view>
+			</view>
+		</view>
+		<view class="box-0-0">
+			<view class="box-0-0-0">备注：{{item.explain}}</view>
+			<view class="box-0-0-1" bindtap="finishFn" data-id="{{item.mobile}}" data-index="{{index}}">完成</view>
+		</view>
+	</view>
+
+	
+</block>

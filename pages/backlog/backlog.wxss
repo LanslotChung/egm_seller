@@ -1,0 +1,35 @@
+/* pages/backlog/backlog.wxss */
+.box-0{
+  width: 712rpx;
+  margin:20rpx auto 0;
+  border: 2rpx solid #e0e0e0;
+  display: flex;
+  position: relative;
+  height: 130rpx;
+  line-height: 130rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  box-shadow: 2rpx 0rpx 2rpx rgba(0,0,0,0.1), 0rpx 2rpx 2rpx rgba(0,0,0,0.1);
+}
+.box-0 .iconfont{
+  font-size: 50rpx;
+  width: 90rpx;
+  text-align: center;
+  color: #f59a23;
+}
+.box-0-0{
+  flex: 1;
+  font-size: 30rpx;
+}
+.box-0-1{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 10rpx;
+  height: 30rpx;
+  background-color: #d9001b;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  text-align: center;
+}

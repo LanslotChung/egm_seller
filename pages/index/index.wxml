@@ -1,0 +1,93 @@
+<!--index.wxml-->
+<topTitle title="云楼" show="{{false}}" />
+<scroll-view scroll-y refresher-enabled style="height:{{scrollViewH}}px;box-sizing:border-box" bindrefresherrefresh="onRefresh" refresher-triggered="{{refresherTriggered}}" bindrefresherrestore="onRestore">
+  <view class="box-0">
+    <view class="box-0-0">
+      <image src="{{indexInfo.mainPic}}"></image>
+    </view>
+    <view class="box-0-1">
+      <view class="box-0-1-0">
+        <view class="box-0-1-0-0">
+          <view class="box-0-1-0-0-0">
+            <image src="{{indexInfo.adviserHeadPic}}"></image>
+          </view>
+          <view class="box-0-1-0-0-1">
+            <view class="box-0-1-0-0-1-0">
+              <view class="box-0-1-0-0-1-0-0">{{indexInfo.adviserName}}</view>
+            </view>
+            <view class="box-0-1-0-0-1-0-1">{{indexInfo.adviserLevelName}}</view>
+            <view class="box-0-1-0-0-1-1">联系方式:{{indexInfo.adviserMobile}}</view>
+            <view class="box-0-1-0-0-1-1">微信号:{{indexInfo.adviserWxNumber}}</view>
+          </view>
+          <view class="box-0-1-0-0-2">
+            <button class="box-0-1-0-0-2-0" bindtap="chooseProduct"></button>
+            <!-- <view class="iconfont iconfenxiang"></view> -->
+            <!-- <view class="box-0-1-0-0-2-1"><image src="../../imgs/fx.png"></image> </view> -->
+            <view class="box-0-1-0-0-2-2">{{indexInfo.productName}}</view>
+          </view>
+        </view>
+        <view class="box-0-1-0-1">
+          <view class="box-0-1-0-1-0">
+            <view class="box-0-1-0-1-0-0">
+              <view class="box-0-1-0-1-0-0-0" wx:if="{{indexInfo.visitorHeadPics[0].headPic}}">
+                <image src="{{indexInfo.visitorHeadPics[0].headPic}}"></image>
+              </view>
+              <view class="box-0-1-0-1-0-0-1" wx:if="{{indexInfo.visitorHeadPics[1].headPic}}">
+                <image src="{{indexInfo.visitorHeadPics[1].headPic}}"></image>
+              </view>
+              <view class="box-0-1-0-1-0-0-2" wx:if="{{indexInfo.visitorHeadPics[2].headPic}}">
+                <image src="{{indexInfo.visitorHeadPics[2].headPic}}"></image>
+              </view>
+            </view>
+            <view class="box-0-1-0-1-0-1"><text>{{indexInfo.hits}}</text>次浏览</view>
+          </view>
+          <view class="box-0-1-0-1-1">
+            <view class="box-0-1-0-1-1-0" bindtap="goCardPage">
+              <view class="box-0-1-0-1-1-0-0">
+                <image src="../../imgs/ewm.png"></image>
+              </view>
+              <view class="box-0-1-0-1-1-0-1">二维码</view>
+            </view>
+            <view class="box-0-1-0-1-1-0" bindtap="goOtherPrograms">
+              <view class="box-0-1-0-1-1-0-0">
+                <image src="../../imgs/xcx.png"></image>
+              </view>
+              <view class="box-0-1-0-1-1-0-1">小程序</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="box-1">
+    <view class="box-1-0">最近访客</view>
+  </view>
+  <view class="box-2" wx:if="{{indexInfo && indexInfo.visitorList&&indexInfo.visitorList.length>0}}">
+    <block wx:for="{{indexInfo.visitorList}}" wx:key="index">
+      <view class="box-2-0">
+        <view class="box-2-0-0">
+          <image src="{{item.headPic}}"></image>
+        </view>
+        <view class="box-2-0-1">
+          <view class="box-2-0-1-0">{{item.nickName}}</view>
+          <view class="box-2-0-1-1">{{item.describe}}</view>
+          <view class="box-2-0-1-2">{{item.visTime}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  
+</scroll-view>
+<view class="box-3" wx:if="{{cardPreviewDataShow}}">
+  <view class="box-3-0">
+    <view class="box-3-0-0">
+      <image src="{{cardPreviewData.codeUrl}}" style="width:{{imgW}}rpx;height:{{imgH}}rpx;"></image>
+    </view>
+    
+    <view class="box-3-0-2">
+      <view class="box-3-0-2-0" bindtap="hideBox3">取消</view>
+      <view class="box-3-0-2-1" bindtap="saveCardPreview">保存</view>
+    </view>
+  </view>
+</view>

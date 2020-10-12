@@ -1,0 +1,113 @@
+<!--pages/clientDetails/clientDetails.wxml-->
+<topTitle title="客户详情" show="{{true}}" />
+
+<view class="box-0">
+  <view class="box-0-0">
+    <image src="{{visitorDetails.headPic}}"></image>
+  </view>
+  <view class="box-0-1">
+    <view class="box-0-1-0">
+      <view class="box-0-1-0-0">姓名：{{visitorDetails.nickName}}</view>
+      <view>性别：{{visitorDetails.sex==1?'男':visitorDetails.sex==2?'女':'未知'}}</view>
+    </view>
+    <view class="box-0-1-1">电话号码：{{visitorDetails.mobile}}</view>
+    <view class="box-0-1-2">最后访问时间：{{visitorDetails.visTime}}</view>
+    <view class="box-0-1-2">{{visitorDetails.address?visitorDetails.address:''}}</view>
+  </view>
+  <view class="box-0-2">
+    <view class="box-0-2-0" bindtap="showEditInfoFn">编辑信息</view>
+    <!-- <view class="box-0-2-1" bindtap="showAddClicentFn">添加客户</view> -->
+  </view>
+</view>
+
+<view class="box-1" hidden="{{!showBehavior}}">用户行为</view>
+<view class="box-2" hidden="{{!showBehavior}}">
+  <view class="box-2-0">项目浏览数据</view>
+  <view class="box-2-1">
+    <view class="box-2-1-0">
+      <view>总次数</view>
+      <view>{{behaviorInfo.programNum}}次</view>
+    </view>
+    <view class="box-2-1-0 box-2-1-1">
+      <view>总时长</view>
+      <view>{{behaviorInfo.programLength}}分钟</view>
+    </view>
+  </view>
+  <view class="box-2-0" hidden="{{behaviorInfo.userHouseBrowsingList.length==0}}">户型浏览数据</view>
+  <view class="box-2-1" style="height:{{canvasHeight}}rpx" hidden="{{behaviorInfo.userHouseBrowsingList.length==0}}">
+    <!-- <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" force-use-old-canvas="true"></ec-canvas> -->
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  </view>
+  <view class="box-2-0">客户行为记录</view>
+  <view class="box-2-1 box-2-2">
+    <view class="box-2-2-0">最近浏览记录</view>
+    <view class="box-2-2-1" wx:for="{{behaviorInfo.date}}" wx:key="index">
+      <view class="box-2-2-1-0">{{item.date}}</view>
+      <view class="box-2-2-1-1">
+        <view class="box-2-2-1-1-0"></view>
+        <view class="box-2-2-1-1-1"></view>
+      </view>
+      <view class="box-2-2-1-2">
+        <view class="box-2-2-1-2-0" wx:for="{{item.userBrowList}}" wx:key="index">
+          {{item.title}}  {{item.timeTitle}} 停留了{{item.stop_seconds}}秒
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="box-3" bindtap="getEditUserInfo" wx:if="{{!showBehavior}}">分析用户行为</view>
+
+<!-- <view class="box-4" wx:if="{{showBox4}}">
+  <view class="box-4-0">
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">姓名：</view>
+      <input class="box-4-0-0-2" value="{{clientName}}" bindinput="inputClientNameFn"></input>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">性别:</view>
+      <picker class="box-4-0-0-2" bindchange="bindsexPickerChange" value="{{clientSexsIndex}}" range="{{sexs}}" range-key="txt">
+        <view class="picker">{{sexs[clientSexsIndex].txt}}</view>
+      </picker>
+    </view>
+    <view class="box-4-0-0" hidden="true">
+      <view class="box-4-0-0-1">手机:</view>
+      <input class="box-4-0-0-2" type="number" value="{{clientPhone}}"></input>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">意向:</view>
+      <picker class="box-4-0-0-2" bindchange="bindDegreePickerChange" value="{{clientDegreeIndex}}" range="{{clientDegrees}}" range-key="txt">
+        <view class="picker">{{clientDegrees[clientDegreeIndex].txt}}</view>
+      </picker>
+    </view>
+    <view class="box-4-1">
+      <view class="box-4-1-0" bindtap="addClicentFn">确定</view>
+      <view class="box-4-1-1" bindtap="hideClicentFn">取消</view>
+    </view>
+  </view>
+</view> -->
+
+<view class="box-4" wx:if="{{showBox5}}">
+  <view class="box-4-0">
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">姓名：</view>
+      <input class="box-4-0-0-2" value="{{visitorName}}" bindinput="inputvisitorNameFn"></input>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">性别:</view>
+      <picker class="box-4-0-0-2" bindchange="bindvisitorSexPickerChange" value="{{visitorSexIndex}}" range="{{sexs}}" range-key="txt">
+        <view class="picker">{{sexs[visitorSexIndex].txt}}</view>
+      </picker>
+    </view>
+    <view class="box-4-0-0">
+      <view class="box-4-0-0-1">意向:</view>
+      <picker class="box-4-0-0-2" bindchange="bindDegreePickerChange" value="{{clientDegreeIndex}}" range="{{clientDegrees}}" range-key="txt">
+        <view class="picker">{{clientDegrees[clientDegreeIndex].txt}}</view>
+      </picker>
+    </view>
+    <view class="box-4-1">
+      <view class="box-4-1-0" bindtap="editVisitorFn">确定</view>
+      <view class="box-4-1-1" bindtap="hideVisitorFn">取消</view>
+    </view>
+  </view>
+</view>

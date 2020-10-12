@@ -1,0 +1,32 @@
+<!--pages/backlog/backlog.wxml-->
+<topTitle title="待办" show="{{false}}" />
+
+<view class="box-0" bindtap="goBacklogList" data-id="1">
+  <view class="iconfont icontelephone"></view>
+  <view class="box-0-0">今日待回访</view>
+  <view class="box-0-1" wx:if="{{todoTotalList.returnVisitorCount!=0}}">{{todoTotalList.returnVisitorCount}}</view>
+</view>
+
+<view class="box-0" bindtap="goBacklogList" data-id="2">
+  <view class="iconfont iconyanjing"></view>
+  <view class="box-0-0">今日待看房</view>
+  <view class="box-0-1" wx:if="{{todoTotalList.showHouseCount!=0}}">{{todoTotalList.showHouseCount}}</view>
+</view>
+
+<view class="box-0" bindtap="goBacklogList" data-id="3">
+  <view class="iconfont iconbhjqianyueqiang"></view>
+  <view class="box-0-0">今日待签约</view>
+  <view class="box-0-1" wx:if="{{todoTotalList.signCount!=0}}">{{todoTotalList.signCount}}</view>
+</view>
+
+<view class="box-0" bindtap="goBacklogList" data-id="4">
+  <view class="iconfont iconwoshou"></view>
+  <view class="box-0-0">今日待成交</view>
+  <view class="box-0-1" wx:if="{{todoTotalList.dealCount!=0}}">{{todoTotalList.dealCount}}</view>
+</view>
+
+<view class="box-0" bindtap="goBacklogList" data-id="5">
+  <view class="iconfont iconwancheng"></view>
+  <view class="box-0-0">其他事项</view>
+  <view class="box-0-1" wx:if="{{todoTotalList.otherCount!=0}}">{{todoTotalList.otherCount}}</view>
+</view>

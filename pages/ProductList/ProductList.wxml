@@ -1,0 +1,34 @@
+<!--pages/ProductList.wxml-->
+<topTitle title="产品选择" show="{{true}}" />
+<view class="box-2">
+  <view class="box-2-0" wx:for="{{productList}}" wx:key="index" bindtap="chooseProduct" data-product="{{item.projectId}}" data-index="{{index}}">
+  <!-- <swiper class="box-2-0"> -->
+    <block>
+      <!-- <swiper-item> -->
+        <view class="box-2-0-0">
+          <view class="box-2-0-0-0">
+            <view class="box-2-0-0-0-0"><image src="{{item.mainPic}}"></image></view>
+            <view class="box-2-0-0-0-1" hidden="{{expireStatus[index]}}">
+              <view class="box-2-0-0-0-1-0">选择</view>
+            </view>
+            <view class="box-2-0-0-0-2" hidden="{{!expireStatus[index]}}">已过期</view>
+          </view>
+          <view class="box-2-0-0-1">
+            <view class="box-2-0-0-1-0"><image src="{{item.icon}}"></image></view>
+            <view class="box-2-0-0-1-1">
+              <view class="box-2-0-0-1-1-0">{{item.productName}}</view>
+              <view class="box-2-0-0-1-1-0">{{item.developers}}</view>
+            </view>
+            <view class="box-2-0-0-1-2">
+              <view class="box-2-0-0-1-2-0">
+                <view class="iconfont iconloc-s"></view>
+                <view>{{shortAddrs[index]}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      <!-- </swiper-item> -->
+    </block>
+  <!-- </swiper> -->
+  </view>
+</view>
