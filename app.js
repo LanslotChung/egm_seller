@@ -28,7 +28,7 @@ App({
   globalData: {
     showIndex:false,//控制首页回调
     userInfo: null,//用户信息
-    url: 'https://xiecong123.online/egm',
+   url: 'https://xiecong123.online/egm',
     // url: 'http://192.168.3.7:8180/egm',
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],//获取状态栏高度
     screenHeight:wx.getSystemInfoSync()['screenHeight'],

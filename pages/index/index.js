@@ -75,13 +75,27 @@ Page({
   goOtherPrograms:function(){
     wx.navigateToMiniProgram({
       appId:'wx09eb9d792dcfae83',
-      path:'/pages/index/index',
-      envVersion:'develop',
+     // path:'/pages/index/index',
+      envVersion:'release',
       extraData:{
         adviserId:app.globalData.userInfo.adviserId,
         projectId:app.globalData.userInfo.projectId
       }
     })
+  },
+  pasteLink:function(){
+    wx.setClipboardData({
+      data: 'https://yunlou.egstudio.cn/dist/index.html?projectId='+app.globalData.userInfo.projectId+'&adviserId='+app.globalData.userInfo.adviserId,
+      success: function (res) {
+          wx.getClipboardData({
+              success: function (res) {
+                  wx.showToast({
+                      title: '复制分享链接成功'
+                  })
+              }
+          })
+      }
+  })
   },
   onRefresh() {
     if (this._freshing) return
